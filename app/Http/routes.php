@@ -13,4 +13,17 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
+
+Route::auth();
+
+
+Route::get('/test1', function () {
+    return view('test1');
+}); 
+
+Route::resource('users', 'UserController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('permissions', 'PermissionController');
