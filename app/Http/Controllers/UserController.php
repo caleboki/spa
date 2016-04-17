@@ -72,7 +72,7 @@ class UserController extends Controller
         
         $email = $request['email'];
         $name = $request['name'];
-        $password = $request['password'];
+        $password = bcrypt($request['password']);
 
         $user = new User();
         $user->email = $email;
@@ -142,7 +142,9 @@ class UserController extends Controller
             'password_confirmation'=>'required|same:password']
         );
 
-        $input = $request->except(['roles']);
+
+        $input = $request->only(['name', bcrypt('password')]);
+        
 
         $roles[] = $request['roles'];
 

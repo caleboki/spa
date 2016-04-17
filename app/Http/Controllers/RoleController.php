@@ -18,7 +18,6 @@ class RoleController extends Controller
     {
         $this->middleware('auth');
         
-        $user = Auth::user();
         
         
     }

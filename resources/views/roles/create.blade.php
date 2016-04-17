@@ -12,15 +12,17 @@
         @endforeach
     @endif
 
-    <h1><i class='fa fa-user-plus'></i> Add Role</h1>
+    <h1><i class='fa fa-key'></i> Add Role</h1>
     <br>
 
     {{ Form::open(array('url' => 'roles')) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}
-        {{ Form::text('name', '', array('class' => 'form-control')) }}
+        {{ Form::text('name', null, array('class' => 'form-control')) }}
     </div>
+
+    <h5><b>Assign Permissions</b></h5>
 
     <div class='form-group'>
         @foreach ($permissions as $permission)
