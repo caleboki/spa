@@ -6,6 +6,8 @@ use Closure;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\User;
+
 class AdminMiddleware
 {
     /**
@@ -17,9 +19,13 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->hasPermissionTo('Administer roles & permissions'))
-        {
-            abort('401');
+        $user = User::all()->count();
+        if (!($user == 1)) {
+
+            if (!Auth::user()->hasPermissionTo('Administer roles & permissions'))
+            {
+                abort('401');
+            }
         }
         return $next($request);
     }

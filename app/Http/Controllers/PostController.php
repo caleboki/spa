@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('isAdmin')->except('index', 'show');
+        
 
     }
 
