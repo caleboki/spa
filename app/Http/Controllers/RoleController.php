@@ -76,6 +76,8 @@ class RoleController extends Controller
         
             $role->givePermissionTo($p);
         }
+
+        \Session::flash('flash_message','Role '. $role->name.' created');
     
         return redirect('roles'); 
     }
@@ -143,6 +145,10 @@ class RoleController extends Controller
             $role->givePermissionTo($p);
             
         }
+
+        \Session::flash('flash_message','Role, '. $role->name.' edited');
+
+
 
         return redirect('roles'); 
         

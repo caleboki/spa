@@ -52,7 +52,7 @@ class PostController extends Controller
         
 
         $this->validate($request, [
-            'title'=>'required|max:20',
+            'title'=>'required|max:100',
             
             'body' =>'required',
             ]
@@ -68,13 +68,12 @@ class PostController extends Controller
 
         $post->body = $body;
 
-        $post->createdby = Auth::user()->id;
-
-        $post->updatedby = Auth::user()->id;
 
         $post->save();
 
-        return redirect('/');
+        \Session::flash('flash_message','Article, '. $post->title.' created');
+
+        return redirect('/posts');
     }
 
     /**
@@ -98,7 +97,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -110,7 +111,26 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $this->validate($request, [
+            'title'=>'required|max:100',
+            'body'=>'required|',
+            ]);
+
+        $post->title = $request->input('title');
+
+        $post->body = $request->input('body');
+
+
+        $post->save();
+
+        \Session::flash('flash_message','Article, '. $post->title.' updated');
+
+        return redirect()->route('posts.show', $post->id);
+
+
+        //$input = $request->only(['title', '']);
     }
 
     /**
@@ -121,6 +141,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+        return redirect('posts');
     }
 }

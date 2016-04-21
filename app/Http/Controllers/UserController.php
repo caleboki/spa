@@ -51,6 +51,8 @@ class UserController extends Controller
     {
         $roles = Role::get();
         return view('users.create', ['roles'=>$roles]);
+
+
     }
 
     /**
@@ -92,6 +94,8 @@ class UserController extends Controller
         
             $user->assignRole($role_r);
         }
+
+        \Session::flash('flash_message','User successfully added.');
     
         return redirect('users'); 
     }
@@ -163,6 +167,8 @@ class UserController extends Controller
             
             $user->assignRole($role_r);
         }
+
+        \Session::flash('flash_message','User successfully edited.');
 
         return redirect('users');
     }

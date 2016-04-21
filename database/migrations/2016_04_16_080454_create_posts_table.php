@@ -16,25 +16,13 @@ class CreatePostsTable extends Migration
 
             $table->increments('id');
 
-            $table->integer('createdby')->unsigned();
-            
-            $table->integer('updatedby')->unsigned();
-
             $table->string('title');
 
             $table->text('body');
 
             $table->timestamps();
 
-            $table->foreign('createdby')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
-
-            $table->foreign('updatedby')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            
         });
     }
 

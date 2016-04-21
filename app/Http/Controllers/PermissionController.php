@@ -84,6 +84,8 @@ class PermissionController extends Controller
             
         }}
 
+        \Session::flash('flash_message','Permission'. $permission->name.' added! You may now assign a Role');
+
         return redirect('permissions'); 
         
     }
@@ -136,6 +138,8 @@ class PermissionController extends Controller
         
 
         $permission->fill($input)->save();
+
+        \Session::flash('flash_message','Permission '. $permission->name.' edited');
 
         return redirect('permissions');
     }

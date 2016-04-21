@@ -49,6 +49,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ route('posts.create') }}">New Article</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -77,6 +78,9 @@
             </div>
         </div>
     </nav>
+    @if(Session::has('flash_message'))
+    <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
+    @endif
 
     @yield('content')
         
