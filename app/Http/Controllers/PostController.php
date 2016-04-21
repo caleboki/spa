@@ -17,6 +17,8 @@ class PostController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('isAdmin')->except('index', 'show');
+
     }
 
     /**
@@ -26,7 +28,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderby('id', 'desc')->paginate(5);
 
         return view('posts.index', compact('posts'));
     }
@@ -130,7 +132,7 @@ class PostController extends Controller
         return redirect()->route('posts.show', $post->id);
 
 
-        //$input = $request->only(['title', '']);
+       
     }
 
     /**

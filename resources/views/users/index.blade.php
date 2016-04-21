@@ -8,7 +8,7 @@
 
     <h1><i class="fa fa-users"></i> User Administration <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
     <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a></h1>
-
+    <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
 

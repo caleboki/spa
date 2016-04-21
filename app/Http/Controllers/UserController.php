@@ -19,15 +19,17 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->middleware('isAdmin');
         
-        $user = Auth::user();
-        
+        //$user = Auth::user();
+        /*
         if ($user)
             {
            
             if (!$user->hasAnyRole(Role::all())) {
             $user->assignRole('visitor');
-        }}
+        }} */
     }
 
     /**
@@ -119,11 +121,20 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        /*
+        if (!Auth::user()->hasPermissionTo('Administer roles & permissions'))
+        {
+            abort('401');
 
-        $roles = Role::get();
+        }*/
+               
+            $user = User::find($id);
 
-        return view('users.edit', compact('user', 'roles'));
+            $roles = Role::get();
+
+            return view('users.edit', compact('user', 'roles'));
+
+        
     }
 
     /**

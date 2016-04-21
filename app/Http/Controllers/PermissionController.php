@@ -17,8 +17,7 @@ class PermissionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
-        
+        $this->middleware('isAdmin');
         
     }
     /**
@@ -84,7 +83,7 @@ class PermissionController extends Controller
             
         }}
 
-        \Session::flash('flash_message','Permission'. $permission->name.' added! You may now assign a Role');
+        \Session::flash('flash_message','Permission'. $permission->name.' added!');
 
         return redirect('permissions'); 
         

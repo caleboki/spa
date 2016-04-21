@@ -9,6 +9,7 @@
 
     <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
     <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a></h1>
+    <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
 

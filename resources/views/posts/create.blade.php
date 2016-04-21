@@ -7,13 +7,11 @@
 <div class="row">
 
 	<div class="col-md-8 col-md-offset-2">
-	@if ($errors->has())
-        @foreach ($errors->all() as $error)
-            <div class='bg-danger alert'>{{ $error }}</div>
-        @endforeach
-    @endif
+
+	
 		<h1>Create New Post</h1>
-		<hr>
+        <hr>
+        @include ('errors.list')
 			{{ Form::open(array('route' => 'posts.store')) }}
 
     		<div class="form-group">
