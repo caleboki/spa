@@ -57,6 +57,23 @@ class ClearanceMiddleware
 
             }
 
+        if ($request->isMethod('Delete')) 
+            {
+
+                if (!Auth::user()->hasPermissionTo('Delete Post'))
+                {
+
+                abort('401');
+                
+                }
+
+                else {
+
+                    return $next($request);
+                }
+
+            }    
+
         return $next($request);
 
         

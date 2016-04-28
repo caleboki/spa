@@ -12,14 +12,12 @@
 	<hr>
 	{!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id] ]) !!}
 	<a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
-	@role('Admin')
+	@haspermission('Edit Post')
 	<a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info" role="button">Edit</a>
-    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-	@endrole
-	@role('Owner')
-	<a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info" role="button">Edit</a>
-    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-	@endrole
+	@endhaspermission
+	@haspermission('Delete Post')
+	{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+	@endhaspermission
 	{!! Form::close() !!}
 
 </div>

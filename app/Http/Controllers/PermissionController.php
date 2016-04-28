@@ -27,12 +27,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-         /*
-         $user = Auth::user();
-         if (!$user->hasPermissionTo('Administer permissions'))
-            {
-                abort(401);
-            }; */
+        
         $permissions = Permission::all();
 
         return view('permissions.index')->with('permissions', $permissions);
@@ -60,8 +55,6 @@ class PermissionController extends Controller
         
         $this->validate($request, [
             'name'=>'required|max:40',
-
-            //'roles'=>'required'
             
             ]
         );
@@ -74,7 +67,7 @@ class PermissionController extends Controller
 
         $permission->save();
 
-        if (!$roles) {
+        if (!empty($request['roles'])) {
         foreach ($roles[0] as $role) {
             $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
              
@@ -97,7 +90,7 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('permissions');
     }
 
     /**

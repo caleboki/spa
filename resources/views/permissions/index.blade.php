@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title') Users @endsection
-
 @section('content')
 
 <div class="col-lg-10 col-lg-offset-1">

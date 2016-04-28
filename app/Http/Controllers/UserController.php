@@ -22,14 +22,7 @@ class UserController extends Controller
 
         $this->middleware('isAdmin');
         
-        //$user = Auth::user();
-        /*
-        if ($user)
-            {
-           
-            if (!$user->hasAnyRole(Role::all())) {
-            $user->assignRole('visitor');
-        }} */
+       
     }
 
     /**
@@ -51,7 +44,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+        $roles = Role::all();
         return view('users.create', ['roles'=>$roles]);
 
 
@@ -121,13 +114,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        /*
-        if (!Auth::user()->hasPermissionTo('Administer roles & permissions'))
-        {
-            abort('401');
-
-        }*/
-               
+             
             $user = User::find($id);
 
             $roles = Role::get();

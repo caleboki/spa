@@ -15,12 +15,7 @@ Route::get('/', [
     'as' => 'home', 'uses' => 'PostController@index'
 ]); 
 
-Route::auth();
-
-
-Route::get('/test1', function () {
-    return view('test1');
-}); 
+Route::auth(); 
 
 Route::resource('users', 'UserController');
 
