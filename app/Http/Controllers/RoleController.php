@@ -90,7 +90,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        
+        return redirect('roles');
     }
 
     /**

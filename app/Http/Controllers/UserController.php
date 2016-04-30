@@ -145,7 +145,7 @@ class UserController extends Controller
         );
 
 
-        $input = $request->only(['name', bcrypt('password')]);
+        $input = $request->only(['name', 'email', bcrypt('password')]);
         
 
         $roles[] = $request['roles'];
